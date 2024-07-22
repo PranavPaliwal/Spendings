@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:spendings/models/expense.dart';
 import 'package:spendings/widgets/expense_list/exepnse_list.dart';
+import 'package:spendings/widgets/new_expense.dart';
 
 class Expenses extends StatefulWidget {
   const Expenses({super.key});
@@ -15,14 +16,37 @@ class Expenses extends StatefulWidget {
 class _ExpensesState extends State<Expenses> {
 
     final List <Expense> _registeredExpenses=[
-      Expense(title:'Flutter Course',amount: 50.0,date: DateTime.now(), category: Category.work),
-       Expense(title:'ice cream',amount: 60.0,date: DateTime.now(), category: Category.travel),
+      Expense(title:'Flutter Course',
+      amount: 50.0,date: DateTime.now(),
+       category: Category.work,
+       ),
+
+       Expense(title:'ice cream',
+       amount: 60.0,date: DateTime.now(),
+        category: Category.travel
+        ),
     ];
 
+
+    void _openAddExpenseOverlay(){
+      showModalBottomSheet(context: context,
+       builder: (ctx) => const NewExpense(),
+       );
+        }
+
   @override
-  Widget build(BuildContext context) {
-    
-   return Scaffold(body: Column(
+  Widget build(BuildContext context) {  
+   return Scaffold(
+    appBar: AppBar(
+      title: const Text("Spendings..."),
+      actions: [
+        IconButton(
+          onPressed:_openAddExpenseOverlay,
+          icon: const Icon(Icons.add_box_sharp),
+          )
+      ],
+    ),
+    body: Column(
     children: [
       const Text(" the chart columns"),
       Expanded(child: ExpenseList(expenses: _registeredExpenses),
