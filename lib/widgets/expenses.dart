@@ -8,51 +8,60 @@ class Expenses extends StatefulWidget {
   const Expenses({super.key});
 
   @override
-  State<Expenses> createState(){
+  State<Expenses> createState() {
     return _ExpensesState();
   }
 }
 
 class _ExpensesState extends State<Expenses> {
+  final List<Expense> _registeredExpenses = [
+    Expense(
+      title: 'Flutter Course',
+      amount: 50.0,
+      date: DateTime.now(),
+      category: Category.work,
+    ),
+    Expense(
+        title: 'ice cream',
+        amount: 60.0,
+        date: DateTime.now(),
+        category: Category.travel),
+  ];
 
-    final List <Expense> _registeredExpenses=[
-      Expense(title:'Flutter Course',
-      amount: 50.0,date: DateTime.now(),
-       category: Category.work,
-       ),
+  void _openAddExpenseOverlay() {
+    showModalBottomSheet(
+      isScrollControlled: true,
+      context: context,
+      builder: (ctx) => NewExpense(openAddExpense: _addExpense,),
+    );
+  }
 
-       Expense(title:'ice cream',
-       amount: 60.0,date: DateTime.now(),
-        category: Category.travel
-        ),
-    ];
-
-
-    void _openAddExpenseOverlay(){
-      showModalBottomSheet(context: context,
-       builder: (ctx) => const NewExpense(),
-       );
-        }
+  void _addExpense(Expense expense) {
+    setState(() {
+      _registeredExpenses.add(expense);
+    });
+  }
 
   @override
-  Widget build(BuildContext context) {  
-   return Scaffold(
-    appBar: AppBar(
-      title: const Text("Spendings..."),
-      actions: [
-        IconButton(
-          onPressed:_openAddExpenseOverlay,
-          icon: const Icon(Icons.add_box_sharp),
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Spendings..."),
+        actions: [
+          IconButton(
+            onPressed: _openAddExpenseOverlay,
+            icon: const Icon(Icons.add_box_sharp),
           )
-      ],
-    ),
-    body: Column(
-    children: [
-      const Text(" the chart columns"),
-      Expanded(child: ExpenseList(expenses: _registeredExpenses),
-        )
-       ],
+        ],
       ),
-    ); 
+      body: Column(
+        children: [
+          const Text(" the chart columns"),
+          Expanded(
+            child: ExpenseList(expenses: _registeredExpenses),
+          )
+        ],
+      ),
+    );
   }
 }
