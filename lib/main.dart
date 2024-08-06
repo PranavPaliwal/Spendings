@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:spendings/widgets/expenses.dart';
 
 var kColorScheme = ColorScheme.fromSeed(
-  seedColor: Color(0xFF48B5B8), // Blue-green seed color
+  seedColor:const Color(0xFF48B5B8), // Blue-green seed color
 );
 
 void main() {
   runApp(
     MaterialApp(
       theme: ThemeData().copyWith(
-        useMaterial3: true,
         colorScheme: kColorScheme,
         appBarTheme: const AppBarTheme().copyWith(
-          backgroundColor: Color(0xFF3498DB), // Bright blue color with a slight sparkle effect
+          backgroundColor:const Color(0xFF3498DB), // Bright blue color with a slight sparkle effect
           foregroundColor: Colors.white, // White text color for better visibility
         ),
         cardTheme: CardTheme().copyWith(
@@ -30,9 +29,9 @@ void main() {
         ),
         textTheme: ThemeData().textTheme.copyWith(
           titleLarge: TextStyle(
-            fontWeight: FontWeight.normal,
+            fontWeight: FontWeight.bold,
             color: kColorScheme.primary,
-            fontSize: 14,
+            fontSize: 16,
           ),
         ),
       ),
