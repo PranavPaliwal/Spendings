@@ -1,13 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:spendings/widgets/expenses.dart';
 
+var kColorScheme = ColorScheme.fromSeed(
+  seedColor: Color(0xFF48B5B8), // Blue-green seed color
+);
+
 void main() {
   runApp(
-     MaterialApp(
-      theme: ThemeData().copyWith(useMaterial3: true,
-      scaffoldBackgroundColor:Color.fromARGB(255, 255, 243, 199)),
+    MaterialApp(
+      theme: ThemeData().copyWith(
+        useMaterial3: true,
+        colorScheme: kColorScheme,
+        appBarTheme: const AppBarTheme().copyWith(
+          backgroundColor: Color(0xFF3498DB), // Bright blue color with a slight sparkle effect
+          foregroundColor: Colors.white, // White text color for better visibility
+        ),
+        cardTheme: CardTheme().copyWith(
+          color: kColorScheme.surfaceVariant,
+          margin: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 8,
+          ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: kColorScheme.primary,
+            foregroundColor: Colors.white, // White text color for better visibility
+          ),
+        ),
+        textTheme: ThemeData().textTheme.copyWith(
+          titleLarge: TextStyle(
+            fontWeight: FontWeight.normal,
+            color: kColorScheme.primary,
+            fontSize: 14,
+          ),
+        ),
+      ),
       home: const Expenses(),
     ),
   );
 }
-
