@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:spendings/models/expense.dart';
+import 'package:spendings/widgets/chart/chart.dart';
 import 'package:spendings/widgets/expense_list/exepnse_list.dart';
 import 'package:spendings/widgets/new_expense.dart';
 
@@ -85,13 +86,13 @@ class _ExpensesState extends State<Expenses> {
         actions: [
           IconButton(
             onPressed: _openAddExpenseOverlay,
-            icon: const Icon(Icons.add_box_sharp),
+            icon: const Icon(Icons.add),
           )
         ],
       ),
       body: Column(
         children: [
-          const Text(" the chart columns"),
+          Chart(expenses: _registeredExpenses),
           Expanded(
             child: mainContent,
           )
