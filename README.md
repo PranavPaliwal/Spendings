@@ -2,7 +2,7 @@
 
 ## 📝 About This Project
 
-Welcome to my delightful Expense Tracker App built with Flutter and Dart! This app is designed to help you keep track of your expenses in a fun and engaging way. It's a work in progress, but I'm thrilled about its potential!
+Welcome to my delightful Expense Tracker App built with Flutter and Dart! This app is designed to help you keep track of your expenses in a fun and engaging way.
 
 ## 🛠️ Getting Started
 
