@@ -12,7 +12,7 @@ To begin using this project:
 2. Run `flutter pub get` in your terminal to install dependencies.
 3. Execute `flutter run` to launch the app on your device.
 
-## 🚀 Features (In Progress)
+## 🚀 Features
 
 - 📊 Expense Tracking: Monitor your spending habits easily.
 - 🔄 Recurring Expenses: Manage those monthly bills efficiently.
